@@ -15,6 +15,7 @@ body {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 h1,
@@ -173,7 +174,8 @@ p {
   padding: 80px 0;
 }
 
-.section--reviews, .section--logos {
+.section--reviews,
+.section--logos {
   background-color: #f8f8f8;
 }
 
@@ -324,7 +326,6 @@ p {
 }
 
 /* services */
-
 .services {
   display: flex;
   flex-wrap: wrap;
@@ -454,7 +455,6 @@ p {
 }
 
 /* reviews */
-
 .reviews {
   padding: 0 210px;
   position: relative;
@@ -535,6 +535,7 @@ p {
   justify-content: center;
   transition: all 0.2s linear;
 }
+
 .social__item {
   background-color: #fce38a;
   border-right: 1px solid #f38181;
@@ -555,8 +556,72 @@ p {
 }
 
 /* logos */
-
 .logos {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+
+/* works */
+.works {
+  display: flex;
+}
+
+.works__col {
+  
+}
+
+.works__item {
+  position: relative;
+  flex-grow: 1;
+
+  background: linear-gradient(to bottom, #f38181, #fce38a);
+  transition: all 0.15s linear;
+}
+
+.works__item--big {
+  height: 100%;
+  display: flex;
+}
+
+.works__item:hover .works__img {
+  opacity: 0.1;
+}
+
+.works__img {
+  object-fit: cover;
+  transition: opacity 0.2s linear;
+}
+
+.works__info {
+  width: 100%;
+  padding: 0 10px;
+  opacity: 0;
+
+  text-align: center;
+  color: #fff;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  transform: translate3d(0, -50%, 0);
+  transition: opacity 0.3s linear;
+}
+
+.works__item:hover .works__info {
+  opacity: 1;
+}
+
+.works__title {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.works__text {
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic;
+}
+
