@@ -31,6 +31,11 @@ p {
   margin: 0;
 }
 
+/* wrapper  */
+.wrapper {
+  overflow: hidden;
+}
+
 /* constainer */
 .container {
   width: 100%;
@@ -46,6 +51,7 @@ p {
 
   width: 100%;
   height: 100vh;
+  min-height: 670px;
 
   background: url("../images/intro/intro.jpg") center no-repeat;
   background-size: cover;
@@ -56,6 +62,7 @@ p {
 .intro__inner {
   width: 100%;
   max-width: 880px;
+
   margin: 0 auto;
   color: #fff;
   text-align: center;
@@ -94,19 +101,112 @@ p {
   left: 0;
   right: 0;
   z-index: 10;
+  padding-top: 20px;
+}
+
+.header--fixed {
+  /* чтобы шапка при скроле появлялась */
+  background-color: #e98283;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding-top: 0;
+  /* чтобы хедер не дергался при скролле */
+  transform: translate3d(0, 0, 0);
 }
 
 .header__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
+
+  padding: 10px 0;
 }
 
 .header__logo {
   font-size: 30px;
   font-weight: 700;
   color: #fff;
+  line-height: 1;
+}
+
+.header__nav {
+  width: 35%;
+}
+
+.header__menu {
+  display: none;
+}
+
+/* burger-menu */
+.burger-menu {
+  width: 30px;
+
+  position: relative;
+}
+
+.burger-menu__item {
+  height: 3px;
+  width: 100%;
+
+  background-color: #fff;
+
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  transition: all 0.5s linear;
+}
+
+.burger-menu__item:before {
+  content: "";
+  height: 3px;
+  width: 100%;
+
+  background-color: #fff;
+
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 0;
+
+  transition: all 0.3s linear;
+}
+
+.burger-menu__item:after {
+  content: "";
+  height: 3px;
+  width: 100%;
+
+  background-color: #fff;
+
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 0;
+
+  transition: all 0.3s linear;
+}
+
+.burger-menu__item.active {
+  background-color: transparent;
+  transition: all 0.15s linear;
+}
+
+.burger-menu__item.active.burger-menu__item:after {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.burger-menu__item.active.burger-menu__item:before {
+  top: 0;
+  transform: rotate(-45deg);
 }
 
 /* nav */
@@ -114,7 +214,6 @@ p {
   font-size: 14px;
   text-transform: uppercase;
   display: flex;
-  width: 35%;
   justify-content: space-between;
 }
 
@@ -1102,7 +1201,6 @@ p {
 
 /* copyright */
 .copyright {
-  /* display: flex; */
   width: 100%;
   border-top: 1px solid #ccc;
 
@@ -1167,11 +1265,15 @@ p {
 /* @media  max-width: 992px */
 @media (max-width: 992px) {
   /* nav  */
-  .nav {
+  .header__nav {
     width: 40%;
   }
 
   /* intro  */
+  .intro {
+    min-height: 744px;
+  }
+
   .intro__suptitle {
     font-size: 42px;
   }
@@ -1225,9 +1327,53 @@ p {
 
 /* @media  max-width: 768px */
 @media (max-width: 768px) {
+  /* header__menu  */
+  .header {
+    padding-top: 5px;
+  }
+
+  .header--fixed {
+    padding-top: 0;
+    box-shadow: 0px 5px 10px -5px rgba(34, 60, 80, 0.5);
+  }
+
+  .header__menu {
+    display: block;
+  }
+
   /* nav  */
   .nav {
-    display: none;
+    display: block;
+
+    position: absolute;
+    top: 100%;
+    left: -2220px;
+
+    width: 100%;
+    height: auto;
+
+    background-color: #ea9183;
+
+    padding-bottom: 10px;
+    border-bottom-left-radius: 10x;
+    border-bottom-right-radius: 10px;
+
+    transition: all 0.5s ease;
+  }
+
+  .nav.active {
+    left: 0;
+  }
+
+  .nav__link {
+    display: flex;
+    font-size: 20px;
+    padding: 30px 30px;
+  }
+
+  .nav__link:after {
+    height: 2px;
+    bottom: 0px;
   }
 
   /* intro  */
@@ -1317,6 +1463,7 @@ p {
     width: 33%;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   /* works  */
@@ -1402,8 +1549,6 @@ p {
     font-size: 13px;
   }
 
-  
-
   /* blogs  */
   .blogs {
     padding-top: 15px;
@@ -1415,9 +1560,122 @@ p {
   }
 }
 
+/* mobile landscape iphone X*/
+
+/* max-width: 920px выбрал опытным путем, это дисплеи ультра высокой четкости в альбомной ориентации типа новых андройдов и последних айфонов  */
+@media (max-width: 920px) and (orientation: landscape) {
+  /* полная переделка первой секции */
+  
+  .header__menu {
+    display: block;
+  }
+
+  .nav {
+    display: block;
+
+    position: absolute;
+    top: 100%;
+    left: -2220px;
+
+    width: 100%;
+    height: auto;
+
+    background-color: #ea9183;
+
+    padding-bottom: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    transition: all 0.5s ease;
+  }
+
+  .nav.active {
+    left: 0;
+  }
+
+  .nav__link {
+    display: flex;
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+
+  .nav__link:after {
+    bottom: 0px;
+    height: 2px;
+  }
+
+  /* intro  */
+  .intro {
+    min-height: 350px;
+    padding-top: 40px;
+  }
+
+  .intro__suptitle {
+    font-size: 36px;
+    line-height: 1;
+
+    margin-bottom: 20px;
+  }
+
+  .intro__title {
+    max-width: 85%;
+    font-size: 60px;
+    line-height: 1;
+
+    margin: 0 auto;
+    margin-bottom: 25px;
+  }
+
+  .intro__title:after {
+    margin: 30px auto;
+  }
+
+  .btn {
+    font-size: 13px;
+    padding: 4px 22px;
+  }
+}
+
+/* mobile landscape Iphone 5 - 7 */
+/* max-width: 768px выбрал опытным путем, это дисплеи высокой четкости в альбомной ориентации типа старых андройдов и айфонов 5-7 */
+@media (max-width: 768px) and (orientation: landscape) {
+  .intro {
+    min-height: 320px;
+  }
+
+  .intro__suptitle {
+    font-size: 32px;
+  }
+
+  .intro__title {
+    max-width: 85%;
+    font-size: 55px;
+  }
+
+  .intro__title:after {
+    display: none;
+  }
+  
+}
+
 /* @media  max-width: 480px */
 @media (max-width: 480px) {
+  /* container  */
+  .container {
+    width: 92%;
+  }
+
+  /* nav  */
+  .nav__link {
+    font-size: 15px;
+    padding: 15px 20px;
+  }
+
   /* intro  */
+  .intro {
+    min-height: auto;
+  }
+
   .intro__suptitle {
     font-size: 30px;
     margin-bottom: 25px;
@@ -1459,7 +1717,7 @@ p {
     flex-grow: 1;
 
     max-width: 100%;
-    padding: 11px;
+    padding: 5px;
   }
 
   .card__pic {
@@ -1639,10 +1897,17 @@ p {
   /* blogs  */
   .blogs__item {
     margin-bottom: 10px;
-  } 
+  }
 
   /* instagram  */
   .instagram__item {
     height: 115px;
+  }
+
+  /* copyright  */
+  .copyright {
+    font-size: 13px;
+
+    padding: 15px 0;
   }
 }
