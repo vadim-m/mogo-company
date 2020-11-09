@@ -131,10 +131,12 @@ p {
   font-weight: 700;
   color: #fff;
   line-height: 1;
+
+  cursor: pointer;
 }
 
 .header__nav {
-  width: 35%;
+  width: 45%;
 }
 
 .header__menu {
@@ -1346,7 +1348,7 @@ p {
     display: block;
 
     position: absolute;
-    top: 100%;
+    top: 98%;
     left: -2220px;
 
     width: 100%;
@@ -1595,8 +1597,8 @@ p {
 
   .nav__link {
     display: flex;
-    font-size: 14px;
-    padding: 12px 15px;
+    font-size: 13px;
+    padding: 10px 15px;
   }
 
   .nav__link:after {
