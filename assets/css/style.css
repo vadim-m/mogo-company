@@ -374,7 +374,6 @@ p {
   transform: translate3d(0, -50%, 0);
 
   transition: all 0.15s linear;
-  
 }
 
 .card__info {
@@ -497,9 +496,20 @@ p {
 }
 
 /* accordion */
+.accordion {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-height: 380px;
+}
 .accordion__item {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
   border: 1px solid #e5e5e5;
-  border-bottom: none;
   margin-bottom: 10px;
 }
 
@@ -507,16 +517,9 @@ p {
   margin-bottom: 0;
 }
 
-.accordion__item--active .accordion__content {
-  display: block;
-}
-
-.accordion__item--active .accordion__header:after {
-  transform: translateY(-15%) rotate(-45deg);
-}
-
 .accordion__header {
   position: relative;
+
   display: flex;
   align-items: center;
 
@@ -538,14 +541,27 @@ p {
   border-right: 2px solid #ccc;
 
   transform: translateY(-65%) rotate(135deg);
+  transition: all 0.2s linear;
+}
+
+.accordion__item.active .accordion__header:after {
+  transform: translateY(-15%) rotate(-45deg);
 }
 
 .accordion__icon {
   padding: 15px;
 }
 
+.accordion__title {
+  font-size: 14px;
+  color: #333;
+  text-transform: uppercase;
+}
+
 .accordion__content {
-  display: none;
+  display: flex;
+
+  height: 0;
   max-height: 170px;
 
   font-size: 15px;
@@ -554,13 +570,36 @@ p {
   color: #999;
   overflow-y: scroll;
 
-  padding: 20px 15px;
+  transition: all 0.2s linear;
 }
 
-.accordion__title {
-  font-size: 14px;
-  color: #333;
-  text-transform: uppercase;
+/* custom scrollbar width */
+.accordion__content::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* custom scrollbar трек */
+.accordion__content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.21);
+  border-radius: 3px;
+}
+
+/* custom scrollbar ползунок */
+.accordion__content::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+  height: 15px;
+}
+
+.accordion__item.active {
+  flex-grow: 1;
+}
+
+.accordion__item.active .accordion__content {
+  flex-grow: 1;
+  height: auto;
+
+  padding: 10px 10px;
 }
 
 /* reviews */
@@ -1403,7 +1442,7 @@ p {
   }
 
   .card__inner:hover .card__text {
-    transform: translate3d( -5px, -20px, 0);
+    transform: translate3d(-5px, -20px, 0);
   }
 
   /* stat  */
@@ -1576,7 +1615,7 @@ p {
 /* max-width: 920px выбрал опытным путем, это дисплеи ультра высокой четкости в альбомной ориентации типа новых андройдов и последних айфонов  */
 @media (max-width: 920px) and (orientation: landscape) {
   /* полная переделка первой секции */
-  
+
   .header__menu {
     display: block;
   }
@@ -1666,7 +1705,6 @@ p {
   .intro__title:after {
     display: none;
   }
-  
 }
 
 /* @media  max-width: 480px */
