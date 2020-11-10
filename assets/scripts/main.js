@@ -37,9 +37,9 @@ $(function () {
   }
 
   /* SMOOTH SCROLL */
-  // в html необходимо добавить в каждый элемент навигации data-атрибут: data-scroll.
-  // значением будет айди нужной секции.
-  //  $('[data-scroll]') --> выбрать элементы с атрибутом data-scroll!Просто селектор.
+  // в html необходимо добавить в каждый элемент навигации data-атрибут: data-scroll,
+  // значением которого будет айди нужной секции.
+  //  $('[data-scroll]') --> выбрать элементы с атрибутом data-scroll! Просто селектор.
   $('[data-scroll]').on('click', function (event) {
     event.preventDefault();
 
@@ -52,7 +52,7 @@ $(function () {
     // реализация самого перехода к нужной секции при помощи jquerry - animate().
     // отнимаю 25, чтобы скролл был чуть выше нужного блока - так красивее.
     $('html, body').animate({
-      scrollTop: blockOffset - 25
+      scrollTop: blockOffset
     }, 600);
     
     // меняем класс active у выбранного элемента и удаляем у соседних
@@ -64,6 +64,23 @@ $(function () {
     $('#burger-menu').toggleClass('active');
   })
 
+    //отдельная обработка клика на logo MoGo
+    $('#logo').on('click', function(event) {
+      event.preventDefault();
+
+      $('html, body').animate({
+        scrollTop: 0
+      }, 600);;
+    });
+
+    //отдельная обработка клика на кнопку Learn more
+    $('#intro-btn').on('click', function(event) {
+      event.preventDefault();
+
+      $('html, body').animate({
+        scrollTop: introHeight 
+      }, 600);;
+    });
 
   /* BURGER MENU */
   // добавление/удаление классов active после нажатия на бургер меню
